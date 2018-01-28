@@ -1,10 +1,10 @@
 # HoloPseudoLighting
 This project is sample project to show pseudo lighting effect.
 
-#Required Software
+## Required Software
 MixedRealityToolkit for Unity2017.2.1f1: (https://github.com/Microsoft/MixedRealityToolkit-Unity/releases/tag/2017.2.1.0)
 
-#License
+## License
 The MIT License (MIT)
 
 Copyright (c) 2018 arcsin16
