@@ -1,6 +1,8 @@
 # HoloPseudoLighting
 This project is sample project to show pseudo lighting effect.
 
+![Alt text](/Screenshot.png?raw=true "Screenshot")
+
 ## Required Software
 MixedRealityToolkit for Unity2017.2.1f1: (https://github.com/Microsoft/MixedRealityToolkit-Unity/releases/tag/2017.2.1.0)
 
