@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 54002292248557224}
   - component: {fileID: 82783761299368808}
   - component: {fileID: 114689998120279180}
+  - component: {fileID: 114878107481724874}
   m_Layer: 0
   m_Name: LightSourcePrefab
   m_TagString: Untagged
@@ -153,7 +154,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7e91fa1086861354fb703248555fdc8d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.316
   m_Pitch: 1
@@ -235,6 +236,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fa7a31332884c24788150241fae18a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}
+  localVelocity: {x: 0, y: 0, z: 0}
+  localAngularVelocity: {x: 0, y: 0, z: 0}
+--- !u!114 &114878107481724874
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1337658193960832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 253
+    i1: 49
+    i2: 48
+    i3: 125
+    i4: 63
+    i5: 154
+    i6: 160
+    i7: 180
+    i8: 136
+    i9: 18
+    i10: 137
+    i11: 32
+    i12: 106
+    i13: 75
+    i14: 64
+    i15: 234
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!198 &198702035051239568
 ParticleSystem:
   m_ObjectHideFlags: 1

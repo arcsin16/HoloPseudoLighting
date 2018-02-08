@@ -16,7 +16,8 @@ public class PseudoLightingManager : Singleton<PseudoLightingManager>{
     private Color[] colorArray;
 
     void Start () {
-        InteractionManager.InteractionSourcePressed += InteractionManager_InteractionSourcePressed;
+        //無効化
+        //InteractionManager.InteractionSourcePressed += InteractionManager_InteractionSourcePressed;
 
         posArray = new Vector4[32];
         colorArray = new Color[32];
@@ -24,10 +25,11 @@ public class PseudoLightingManager : Singleton<PseudoLightingManager>{
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnLightSource();
-        }
+        //無効化
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    SpawnLightSource();
+        //}
     }
 
     private void LateUpdate()

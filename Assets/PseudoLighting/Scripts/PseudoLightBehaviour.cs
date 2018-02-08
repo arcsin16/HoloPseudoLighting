@@ -1,15 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
+using HoloToolkit.Unity.SharingWithUNET;
 
-public class PseudoLightBehaviour : MonoBehaviour {
-    private Color color;
-    private Rigidbody rigid;
-    private ParticleSystem[] particles;
+public class PseudoLightBehaviour : NetworkBehaviour
+{
+    //サーバが設定した初期値をクライアント側に反映するため[SyncVar]とし、
+    //オブジェクトが各クライアントで生成されたタイミングで参照する。
+    [SyncVar]
+    public Color color;
+    [SyncVar]
+    public Vector3 localVelocity;
+    [SyncVar]
+    public Vector3 localAngularVelocity;
+
+    private Rigidbody rb;
 
     void Start () {
-        //ランダムに色を選択
-        color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f), 1);
+        Debug.Log("Start");
+        if (SharedCollection.Instance == null)
+        {
+            Debug.LogError("This script required a SharedCollection script attached to a gameobject in the scene");
+            Destroy(this);
+            return;
+        }
+
+        //サーバがオブジェクト生成時にlocalPositionを初期位置に設定しているので
+        //localPositionを維持したまま、Parentを設定する。
+        transform.SetParent(SharedCollection.Instance.transform, false);
+
+        //速度の反映
+        rb = GetComponentInChildren<Rigidbody>();
+        rb.velocity = transform.parent.TransformDirection(localVelocity);
+        rb.angularVelocity = transform.parent.TransformVector(localAngularVelocity);
 
         //光源（Cube）のマテリアルに色を反映
         var rs = GetComponentsInChildren<Renderer>();
@@ -22,7 +46,7 @@ public class PseudoLightBehaviour : MonoBehaviour {
         }
 
         //光源（Particle）のマテリアルに色を反映
-        particles = GetComponentsInChildren<ParticleSystem>();
+        var particles = GetComponentsInChildren<ParticleSystem>();
         if (particles != null)
         {
             foreach (var p in particles)
@@ -34,11 +58,6 @@ public class PseudoLightBehaviour : MonoBehaviour {
                 main.startColor = gradient;
             }
         }
-
-        //光源に初速（移動、回転）を設定
-        rigid = GetComponent<Rigidbody>();
-        rigid.AddForce(Camera.main.transform.forward, ForceMode.VelocityChange);
-        rigid.angularVelocity = Random.onUnitSphere.normalized;
     }
 
     void Update () {
